@@ -1,0 +1,103 @@
+<div class="container">
+  <header class="header">
+    <h1>{{ title }}</h1>
+    <p class="subtitle">Detecta si un humano es mutante analizando su secuencia de ADN</p>
+  </header>
+
+  <main class="main-content">
+    <!-- Información -->
+    <div class="info-section">
+      <h3 class="info-title">📋 Instrucciones</h3>
+      <div class="info-content">
+        <ul>
+          <li>Completa la matriz de 6x6 con las bases nitrogenadas permitidas</li>
+          <li>Bases válidas: <span class="base">A</span> (Adenina), <span class="base">T</span> (Timina), <span class="base">C</span> (Citosina), <span class="base">G</span> (Guanina)</li>
+          <li>Se requieren al menos 2 secuencias de 4 caracteres idénticos consecutivos para ser <strong>mutante</strong></li>
+          <li>Las secuencias válidas son: horizontal (→), vertical (↓), diagonal derecha (↘) y diagonal izquierda (↙)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Panel de Control -->
+    <div class="control-panel">
+      <label class="control-label">
+        Tamaño de la matriz: {{ gridSize }}x{{ gridSize }}
+      </label>
+      
+      <div class="button-group">
+        <button (click)="loadExample('mutant')" class="btn">
+          Ejemplo Mutante
+        </button>
+        <button (click)="loadExample('noMutant')" class="btn">
+          Ejemplo No Mutante
+        </button>
+        <button (click)="clear()" class="btn">
+          Limpiar
+        </button>
+        <button (click)="analyzeDNA()" class="btn btn-analyze">
+          Analizar ADN
+        </button>
+      </div>
+    </div>
+
+    <!-- Matriz de ADN -->
+    <div class="dna-section">
+      <h2 class="section-title">Matriz de ADN</h2>
+      <p class="section-subtitle">Ingresa las bases nitrogenadas: A, T, C, G</p>
+      
+      <div class="dna-grid">
+        <div *ngFor="let row of dnaForm.controls; let i = index" class="dna-row">
+          <input 
+            *ngFor="let cell of getRow(i).controls; let j = index"
+            type="text" 
+            maxlength="1"
+            [formControl]="getCell(i, j)"
+            (click)="$any($event.target).select()"
+            class="dna-cell"
+            [class.mutant-cell]="result === true && isInSequence(i, j)"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Resultados -->
+    <div class="results-section" *ngIf="result !== null || errorMessage">
+      <div class="result-card" *ngIf="result === true">
+        <div class="result-icon">�</div>
+        <h2 class="result-title mutant-title">¡MUTANTE DETECTADO!</h2>
+        <p class="result-description">
+          Se encontraron {{ sequences.length }} secuencias de ADN mutante
+        </p>
+        <div class="sequences-info" *ngIf="sequences.length > 0">
+          <h3>Secuencias encontradas:</h3>
+          <ul class="sequences-list">
+            <li *ngFor="let seq of sequences">
+              <span class="sequence-badge">{{ seq.base }}</span>
+              {{ seq.direction }} - 
+              Posición: ({{ seq.positions[0].row }},{{ seq.positions[0].col }})
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="result-card" *ngIf="result === false">
+        <div class="result-icon">✅</div>
+        <h2 class="result-title human-title">Humano Normal</h2>
+        <p class="result-description">
+          No se detectaron suficientes secuencias mutantes en el ADN
+        </p>
+      </div>
+
+      <div class="error-card" *ngIf="errorMessage">
+        <div class="error-icon">⚠️</div>
+        <h3 class="error-title">Error</h3>
+        <p class="error-message">{{ errorMessage }}</p>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <p>Detector de Mutantes - Prueba Técnica</p>
+  </footer>
+</div>

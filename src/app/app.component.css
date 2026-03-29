@@ -1,0 +1,328 @@
+/* Estilos básicos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  min-height: 100vh;
+  background: #0891b2;
+  font-family: Arial, sans-serif;
+  padding: 2rem;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  color: white;
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1rem;
+}
+
+/* Main Content */
+.main-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Control Panel */
+.control-panel {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.control-label {
+  display: block;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+/* Buttons */
+.button-group {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  background: #0891b2;
+  color: white;
+}
+
+.btn:hover {
+  background: #0e7490;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-analyze {
+  background: #14b8a6;
+  font-weight: bold;
+}
+
+.btn-analyze:hover {
+  background: #0f766e;
+}
+
+/* DNA Section */
+.dna-section {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+}
+
+.section-title {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.section-subtitle {
+  color: #666;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+/* DNA Grid */
+.dna-grid {
+  display: table;
+  margin: 0 auto;
+  gap: 0.5rem;
+}
+
+.dna-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.dna-cell {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: monospace;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  background: white;
+  text-transform: uppercase;
+}
+
+.dna-cell:focus {
+  outline: none;
+  border-color: #0891b2;
+}
+
+/* Colores para cada base */
+.dna-cell[value="A"] {
+  background: #fbbf24;
+  color: white;
+}
+
+.dna-cell[value="T"] {
+  background: #3b82f6;
+  color: white;
+}
+
+.dna-cell[value="C"] {
+  background: #10b981;
+  color: white;
+}
+
+.dna-cell[value="G"] {
+  background: #ef4444;
+  color: white;
+}
+
+/* Celdas mutantes destacadas */
+.dna-cell.mutant-cell {
+  background: #f59e0b;
+  color: white;
+  border-color: #d97706;
+  border-width: 3px;
+}
+
+/* Results Section */
+.results-section {
+  margin-top: 1.5rem;
+}
+
+.result-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.result-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.result-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.mutant-title {
+  color: #f59e0b;
+}
+
+.human-title {
+  color: #10b981;
+}
+
+.result-description {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+/* Secuencias encontradas */
+.sequences-info {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 2px solid #eee;
+  text-align: left;
+}
+
+.sequences-info h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.sequences-list {
+  list-style: none;
+}
+
+.sequences-list li {
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  background: #f3f4f6;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.9rem;
+}
+
+.sequence-badge {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  background: #0891b2;
+  color: white;
+  border-radius: 3px;
+  margin-right: 0.5rem;
+  font-weight: bold;
+}
+
+/* Error Card */
+.error-card {
+  background: #fee2e2;
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.error-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.error-title {
+  color: #dc2626;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.error-message {
+  color: #991b1b;
+}
+
+/* Info Section */
+.info-section {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.info-title {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.info-content ul {
+  margin-left: 1.5rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+.info-content .base {
+  display: inline-block;
+  padding: 0.1rem 0.4rem;
+  background: #667eea;
+  color: white;
+  border-radius: 3px;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 0.9rem;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: white;
+  font-size: 0.85rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+  }
+
+  .dna-cell {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+}
